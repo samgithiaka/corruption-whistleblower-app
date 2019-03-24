@@ -4,9 +4,142 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reportActivity">
+    tools:context=".reportActivity"
+    android:orientation="vertical">
 
     <LinearLayout
+        android:background="@drawable/custom_border"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_margin="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="WRITE DETAILED REPORT" />
+
+                <EditText
+                    android:inputType="text"
+                    android:background="@drawable/border1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_margin="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:hint="GIVE DETAILS ON THE INCIDENCE SUCH AS NUMBERPLATE OF THE CAR,TIME OF INCIDENCE,AMOUNT OF MONEY.ETC"/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_margin="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BADGE NO." />
+
+                <EditText
+                    android:inputType="number"
+                    android:background="@drawable/border1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:hint="OFFICER/S BADGE NO."/>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+                <Button
+                    android:id="@+id/buttonAttachImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ATTACH IMAGE/S"/>
+                <TextView
+                    android:id="@+id/imageView"
+                    android:text=""
+                    android:hint="the image"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_margin="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LOCATION" />
+
+                <EditText
+                    android:inputType="text"
+                    android:background="@drawable/border1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:gravity="center_horizontal"
+                    android:text=""
+                    android:hint="name of road"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:background="@drawable/custom_border"
         android:layout_width="wrap_content"
         android:orientation="vertical"
         android:layout_height="wrap_content">
@@ -60,79 +193,27 @@
                     android:text="EMAIL" />
 
                 <EditText
-                    android:inputType="textEmailAddress"
-                    android:background="@drawable/border1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:background="@drawable/border1"
                     android:gravity="center_horizontal"
-                    android:text=""
-                    android:hint="OPTIONAL"/>
+                    android:hint="OPTIONAL"
+                    android:inputType="textEmailAddress"
+                    android:text="" />
 
             </LinearLayout>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
 
-                <TextView
-                    android:layout_margin="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="LOCATION" />
-
-                <EditText
-                    android:inputType="textEmailAddress"
-                    android:background="@drawable/border1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="center_horizontal"
-                    android:text=""
-                    android:hint="LOCATION OF THE INCIDENCE"/>
-
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:layout_margin="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="EMAIL" />
-
-                <EditText
-                    android:inputType="textEmailAddress"
-                    android:background="@drawable/border1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:gravity="center_horizontal"
-                    android:text=""
-                    android:hint="OPTIONAL"/>
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
-
+<LinearLayout
+    android:layout_gravity="center_horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <Button
+        android:layout_margin="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"/>
+</LinearLayout>
 </LinearLayout>
