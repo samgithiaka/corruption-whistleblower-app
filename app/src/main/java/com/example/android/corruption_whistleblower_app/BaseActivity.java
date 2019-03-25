@@ -7,6 +7,8 @@ import android.support.annotation.VisibleForTesting;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class BaseActivity extends Activity {
 
     @VisibleForTesting
@@ -39,6 +41,10 @@ public class BaseActivity extends Activity {
     public void onStop() {
         super.onStop();
         hideProgressDialog();
+    }
+
+    public String getUid() {
+        return FirebaseAuth.getInstance().getCurrentUser().getUid();
     }
 
 }

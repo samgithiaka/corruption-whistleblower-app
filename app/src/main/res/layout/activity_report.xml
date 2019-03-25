@@ -33,6 +33,7 @@
                     android:text="WRITE DETAILED REPORT" />
 
                 <EditText
+                    android:id="@+id/incidenceReport"
                     android:inputType="text"
                     android:background="@drawable/border1"
                     android:layout_width="fill_parent"
@@ -66,6 +67,7 @@
                     android:text="BADGE NO." />
 
                 <EditText
+                    android:id="@+id/badgeNo"
                     android:inputType="number"
                     android:background="@drawable/border1"
                     android:layout_width="wrap_content"
@@ -125,6 +127,7 @@
                     android:text="LOCATION" />
 
                 <EditText
+                    android:id="@+id/locationIncident"
                     android:inputType="text"
                     android:background="@drawable/border1"
                     android:layout_width="wrap_content"
@@ -163,6 +166,7 @@
                     android:text="FULL NAME" />
 
                 <EditText
+                    android:id="@+id/fullName"
                     android:background="@drawable/border1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,6 +197,7 @@
                     android:text="EMAIL" />
 
                 <EditText
+                    android:id="@+id/emailAddress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
@@ -211,6 +216,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <Button
+        android:id="@+id/submitButton"
         android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
