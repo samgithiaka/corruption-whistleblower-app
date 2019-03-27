@@ -96,7 +96,7 @@
                     android:id="@+id/buttonAttachImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ATTACH IMAGE/S"/>
+                    android:text="ATTACH IMAGE"/>
                 <TextView
                     android:id="@+id/imageView"
                     android:text=""
@@ -120,23 +120,23 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <TextView
+                <Button
+                    android:id="@+id/locationButton"
                     android:layout_margin="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LOCATION" />
 
-                <EditText
+                <TextView
                     android:id="@+id/locationIncident"
                     android:inputType="text"
-                    android:background="@drawable/border1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_marginLeft="16dp"
                     android:gravity="center_horizontal"
                     android:text=""
-                    android:hint="name of road"/>
+                    android:hint=""/>
 
             </LinearLayout>
         </LinearLayout>

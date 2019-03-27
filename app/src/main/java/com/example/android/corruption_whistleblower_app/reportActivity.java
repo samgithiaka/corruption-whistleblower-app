@@ -1,16 +1,22 @@
 package com.example.android.corruption_whistleblower_app;
 
-import android.content.ContentResolver;
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -24,7 +30,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
-import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -37,6 +42,9 @@ public class reportActivity extends BaseActivity {
     private final int PICK_IMAGE_REQUEST = 71;
     private Uri filePath;
     private TextView imageView;
+    private LocationManager LocationManager;
+   private  double lon;
+   private double lat;
     //Firebase
     //  private static final String TAG = "NewPostActivity";
     private static final String REQUIRED = "Required";
@@ -47,13 +55,13 @@ public class reportActivity extends BaseActivity {
 
     private EditText reportField;
     private EditText badgeNoField;
-    private EditText locationIncident;
+    private Button location2;
     private EditText fullName;
     private EditText emailAddress;
     private Button attachImage;
     private Button submitButton;
-
-   // FirebaseDatabase m;
+    private TextView locationIncident;
+    // FirebaseDatabase m;
     StorageReference storageReference;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     //DatabaseReference myRef = database.getReference("reports");
@@ -65,18 +73,66 @@ public class reportActivity extends BaseActivity {
 
 
         // [START initialize_database_ref]
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = FirebaseDatabase.getInstance().getReference("Reports");
         // [END initialize_database_ref]
 
         reportField = findViewById(R.id.incidenceReport);
         badgeNoField = findViewById(R.id.badgeNo);
         imageView = findViewById(R.id.imageView);
-        locationIncident = findViewById(R.id.locationIncident);
+        location2 = findViewById(R.id.locationButton);
         fullName = findViewById(R.id.fullName);
         emailAddress = findViewById(R.id.emailAddress);
         submitButton = findViewById(R.id.submitButton);
         attachImage = findViewById(R.id.buttonAttachImage);
+        locationIncident = findViewById(R.id.locationIncident);
 
+
+        location2.setOnClickListener(new View.OnClickListener() {
+
+
+            //choosing the image
+            @Override
+            public void onClick(View arg0) {
+
+                // Acquire a reference to the system Location Manager
+                LocationManager locationManager =
+                        (LocationManager) reportActivity.this.getSystemService(Context.LOCATION_SERVICE);
+                // Define a listener that responds to location updates
+                LocationListener locationListener = new LocationListener() {
+                    public void onLocationChanged(Location location) {
+                        // Called when a new location is found by the network location provider.
+                         lat = (location.getLatitude());
+                         lon = (location.getLongitude());
+
+                    }
+
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                    }
+
+                    public void onProviderEnabled(String provider) {
+                    }
+
+                    public void onProviderDisabled(String provider) {
+                    }
+
+                };
+
+                // Register the listener with the Location Manager to receive location updates
+                if (ActivityCompat.checkSelfPermission(reportActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(reportActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+                    //    ActivityCompat#requestPermissions
+                    // here to request the missing permissions, and then overriding
+                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                    //                                          int[] grantResults)
+                    // to handle the case where the user grants the permission. See the documentation
+                    // for ActivityCompat#requestPermissions for more details.
+                    return;
+                }
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                locationIncident.setText("https://maps.google.com/maps?q=" + lat + "," + lon);
+            }
+
+        });
 
         attachImage.setOnClickListener(new View.OnClickListener(){
 
@@ -132,7 +188,7 @@ public class reportActivity extends BaseActivity {
         // [START single_value_read]
       final String userId = getUid();
 
-        mDatabase.child("/reports").child(userId).addListenerForSingleValueEvent(
+        mDatabase.child("Reports").addListenerForSingleValueEvent(
                 new ValueEventListener() {
         /*final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
                 + "." + getFileExtension(filePath));
@@ -208,7 +264,7 @@ public class reportActivity extends BaseActivity {
         //childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
         mDatabase.child(key).setValue(post);
        // mDatabase.updateChildren(childUpdates);
-       Toast.makeText(this,"Upload Successful", Toast.LENGTH_SHORT).show();
+       Toast.makeText(this,"Upload Successful ...your case refeference is;" +key ,  Toast.LENGTH_SHORT).show();
 
     }
     // [END write_fan_out]
@@ -235,6 +291,5 @@ public class reportActivity extends BaseActivity {
             }
         }
     }
-   
 
 }
