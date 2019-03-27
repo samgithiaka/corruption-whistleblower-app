@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".aboutActivity">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="@drawable/custom_border"
+            android:text="You can help in the fight against corruption by reporting all forms of corruption to the Ethics and Anti-Corruption Commission.
+
+By using this standardized whistle blower system, you can remain absolutely anonymous. Perhaps you have knowledge of bribery and corrupt conduct of traffic officers on our roads. But perhaps you shy away from passing on this information personally.
+
+We want to effectively protect you as a whistle blower and are providing you with a communications platform secured by the latest technology for submitting reports with your name or anonymously. If you wish, the application protects your anonymity completely! Nevertheless, you can actively participate in clarification by setting up an anonymous postbox."/>
+
+    </LinearLayout>
+
+</LinearLayout>
