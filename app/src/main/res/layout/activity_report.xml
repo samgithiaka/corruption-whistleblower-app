@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".reportActivity"
-    android:orientation="vertical">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/coordinatorLayout"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/coordinatorLayout1"
+        tools:context=".reportActivity"
+        android:orientation="vertical">
 
     <LinearLayout
-        android:background="@drawable/custom_border"
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
         <LinearLayout
+            android:baselineAligned="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
+
                 android:orientation="vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
@@ -27,6 +36,9 @@
                 android:layout_weight="1">
 
                 <TextView
+
+                    android:textColor="@color/btn"
+                    android:textSize="16sp"
                     android:layout_margin="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -34,15 +46,21 @@
 
                 <EditText
                     android:id="@+id/incidenceReport"
-                    android:inputType="text"
-                    android:background="@drawable/border1"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_marginLeft="16dp"
+                    android:autoText="true"
+                    android:background="@drawable/border1"
+                    android:cursorVisible="true"
                     android:gravity="center_horizontal"
+                    android:hint="GIVE DETAILS ON THE INCIDENCE SUCH AS NUMBERPLATE OF THE CAR,TIME OF INCIDENCE,AMOUNT OF MONEY.ETC"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="2000"
+                    android:maxLines="4"
                     android:text=""
-                    android:hint="GIVE DETAILS ON THE INCIDENCE SUCH AS NUMBERPLATE OF THE CAR,TIME OF INCIDENCE,AMOUNT OF MONEY.ETC"/>
+                    android:textColor="@color/BaseReleaseColor"
+                    android:textColorHint="@color/BallReleaseColor" />
 
             </LinearLayout>
         </LinearLayout>
@@ -51,26 +69,31 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
-                android:orientation="horizontal"
+                android:background="@drawable/custom_border"
+                android:orientation="vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
                 <TextView
+                    android:textColor="@color/btn"
+                    android:textSize="16sp"
                     android:layout_margin="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="BADGE NO." />
 
                 <EditText
+                    android:maxLines="2"
+                    android:textColor="@color/BaseReleaseColor"
                     android:id="@+id/badgeNo"
                     android:inputType="number"
                     android:background="@drawable/border1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:layout_marginLeft="16dp"
@@ -85,6 +108,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
+                android:background="@drawable/custom_border"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="8dp"
@@ -93,6 +117,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
                 <Button
+                    android:layout_margin="8dp"
+                    android:background="@color/btn"
                     android:id="@+id/buttonAttachImage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,7 +126,7 @@
                 <TextView
                     android:id="@+id/imageView"
                     android:text=""
-                    android:hint="the image"
+                    android:hint=""
                     android:layout_width="match_parent"
                     android:layout_height="50dp" />
 
@@ -112,6 +138,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <LinearLayout
+                android:background="@drawable/custom_border"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="8dp"
@@ -121,13 +148,15 @@
                 android:layout_weight="1">
 
                 <Button
+                    android:background="@color/btn"
                     android:id="@+id/locationButton"
                     android:layout_margin="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="LOCATION" />
 
-                <TextView
+                <EditText
+                    android:textColor="@color/BaseReleaseColor"
                     android:id="@+id/locationIncident"
                     android:inputType="text"
                     android:layout_width="wrap_content"
@@ -142,63 +171,74 @@
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
-        android:background="@drawable/custom_border"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+
             <LinearLayout
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_width="0dp"
+                android:background="@drawable/custom_border"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
-                    android:layout_margin="8dp"
+                    android:textColor="@color/btn"
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
                     android:text="FULL NAME" />
 
                 <EditText
+                    android:textColor="@color/BaseReleaseColor"
                     android:id="@+id/fullName"
-                    android:background="@drawable/border1"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:background="@drawable/border1"
                     android:gravity="center_horizontal"
-                    android:text=""
-                    android:hint="OPTIONAL"/>
+                    android:hint="OPTIONAL"
+                    android:text="" />
 
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <LinearLayout
+                android:background="@drawable/custom_border"
+                android:orientation="vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
                 <TextView
+                    android:textColor="@color/btn"
+                    android:textSize="16sp"
                     android:layout_margin="8dp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="EMAIL" />
 
                 <EditText
+                    android:textColor="@color/BaseReleaseColor"
                     android:id="@+id/emailAddress"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:background="@drawable/border1"
@@ -216,10 +256,14 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <Button
+        android:background="@color/btnSubmit"
         android:id="@+id/submitButton"
         android:layout_margin="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SUBMIT"/>
 </LinearLayout>
+
 </LinearLayout>
+
+</ScrollView>

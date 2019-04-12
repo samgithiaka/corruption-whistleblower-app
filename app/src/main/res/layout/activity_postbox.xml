@@ -1,75 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:id="@+id/rootLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".postbox"
-    android:orientation="vertical">
+    android:background="@drawable/eacc_logo">
 
-    <TextView
-        android:id="@+id/titleAnonymous"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:paddingBottom="16dp"
         android:layout_marginBottom="8dp"
-        android:text="Anonymous Sign In" />
-
-    <TextView
-        android:id="@+id/anonymousStatusId"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="signed out" />
+        android:layout_alignParentBottom="true">
 
-    <TextView
-        android:id="@+id/anonymousStatusEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        tools:text="Email: none" />
+        <Button
 
-    <Button
-        android:id="@+id/buttonAnonymousSignIn"
-        android:background="@drawable/btn_sign_in_background"
-        android:textColor="@android:color/background_dark"
-        android:layout_marginRight="6dp"
-        android:text="SIGN IN ANONYMOUSLY"
-        android:layout_width="wrap_content"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
+            android:id="@+id/buttonAnonymousSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/btn"
+            android:text="SIGN IN ANONYMOUSLY"
+            android:textColor="@android:color/background_dark"
 
-        />
-
-    <Button
-        android:id="@+id/buttonAnonymousSignOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:enabled="false"
-        android:layout_weight="1"
-        android:text="sign out"
-        />
+            />
+    </RelativeLayout>
 
 
-
-    <EditText
-        android:id="@+id/fieldEmail"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:hint="email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/fieldPassword"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:hint="password"
-        android:inputType="textPassword" />
-
-
-</LinearLayout>
+</RelativeLayout>
 

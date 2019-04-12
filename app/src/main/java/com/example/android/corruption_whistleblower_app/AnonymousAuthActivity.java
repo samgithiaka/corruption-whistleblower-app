@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -102,7 +100,7 @@ public class AnonymousAuthActivity extends BaseActivity implements
     public void updateUI(FirebaseUser user) {
         hideProgressDialog();
 
-        TextView idView = findViewById(R.id.anonymousStatusId);
+       // TextView idView = findViewById(R.id.anonymousStatusId);
         //TextView emailView = findViewById(R.id.anonymousStatusEmail);
         boolean isSignedIn = (user != null);
 
@@ -117,7 +115,7 @@ public class AnonymousAuthActivity extends BaseActivity implements
             //idView.setText(user.getUid());
             //emailView.setText(user.getEmail());
         } else {
-            idView.setText("signed out");
+         //   idView.setText("signed out");
            // emailView.setText(null);
         }
 

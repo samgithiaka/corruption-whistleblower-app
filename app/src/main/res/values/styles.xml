@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
+        <!-- Customize your theme here. -->z
+        <!--<item name="primaryColor">@color/primaryColor</item>-->
+        <!--<item name="primaryLightColor">@color/primaryLightColor</item>-->
+        <!--<item name="primaryDarkColor">@color/primaryDarkColor</item>-->
+        <!--<item name="primaryTextColor">@color/primaryTextColor</item>-->
+        <item name="android:colorPrimary">@color/Smooch_accent</item>
+        <item name="android:colorPrimaryDark">@color/Smooch_accentDark</item>
+        <item name="android:colorAccent">@color/Smooch_accentDarker</item>
+        <item name="android:colorBackground">@color/fui_bgTwitter</item>
+        <item name="android:textColorPrimary">@color/Smooch_btnActionButton</item>
+        <item name="android:textColorPrimaryInverse">@color/Smooch_btnActionButton</item>
+
+    </style>
+    <style name="AlertDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:colorAccent">#f3f3f3</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textColorPrimary">#131313</item>
+    </style>
+</resources>

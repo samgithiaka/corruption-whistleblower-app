@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="primaryColor">#9c27b0</color>-->
+    <!--<color name="primaryLightColor">#d05ce3</color>-->
+    <!--<color name="primaryDarkColor">#6a0080</color>-->
+    <!--<color name="primaryTextColor">#ffffff</color>-->
+
+
+    <color name="bottomText">#6b6b76</color>
+
+    <color name="btnSubmit">#f816a463</color>
+    <color name="btn">#1fabd6</color>
+    <color name="btnRegister">#83838c</color>
+    <color name="BaseReleaseColor">#092503</color>
+    <color name="BasePressColor">#FAFAFA</color>
+    <color name="BallReleaseColor">#9e9e9e</color>
+    <color name="primary_material_dark">#9d1cb3</color>
+    <color name="primary_dark_material_dark">#290337</color>
+    <color name="accent_material_light">#ff408b</color>
+    <color name="background_material_light">#686798</color>
+    <color name="fui_bgTwitter">#ffffff</color>
+    <color name="text_color_secondary">#89380d3a</color>
+    <!--<color name="secondary_text_material_dark">#b3f7aeae</color>-->
+    <color name="secondary_text_default_material_dark">#b3321c1c</color>
+</resources>
