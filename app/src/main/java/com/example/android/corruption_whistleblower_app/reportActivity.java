@@ -15,15 +15,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
+import androidx.core.app.ActivityCompat;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +31,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -48,7 +45,7 @@ public class reportActivity extends BaseActivity {
     private final int PICK_IMAGE_REQUEST = 71;
     private Uri filePath;
     private TextView imageView;
-    private LocationManager LocationManager;
+
    private  double lon=36.825358;
    private double lat=-1.291244;
    private  String key;
@@ -68,12 +65,6 @@ public class reportActivity extends BaseActivity {
     private Button attachImage;
     private Button submitButton;
     private EditText locationIncident;
-    // FirebaseDatabase m;
-    StorageReference storageReference;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //DatabaseReference myRef = database.getReference("reports");
-    ScrollView coordinatorLayout;
-    LinearLayout coordinatorLayout1;
     private String imageString = "";
 
     @Override
@@ -95,8 +86,6 @@ public class reportActivity extends BaseActivity {
         submitButton = findViewById(R.id.submitButton);
         attachImage = findViewById(R.id.buttonAttachImage);
         locationIncident = findViewById(R.id.locationIncident);
-
-        coordinatorLayout1 = (LinearLayout) findViewById(R.id.coordinatorLayout1);
 
 
         location2.setOnClickListener(new View.OnClickListener() {
@@ -132,12 +121,7 @@ public class reportActivity extends BaseActivity {
                 // Register the listener with the Location Manager to receive location updates
                 if (ActivityCompat.checkSelfPermission(reportActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(reportActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
-                    //    ActivityCompat#requestPermissions
-                    // here to request the missing permissions, and then overriding
-                    //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                    //                                          int[] grantResults)
-                    // to handle the case where the user grants the permission. See the documentation
-                    // for ActivityCompat#requestPermissions for more details.
+
                     return;
                 }
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
@@ -167,18 +151,6 @@ public class reportActivity extends BaseActivity {
                 submitPost();
                 return;
 
-//                Snackbar.make(coordinatorLayout1, "SUBMITTED SUCCESFULLY...CASE REFERENCE NO" +key, Snackbar.LENGTH_INDEFINITE).show();
-//                Snackbar snackbar = Snackbar
-//                        .make(coordinatorLayout1, "SUBMITED SUCCESFULLY ...CASE REFERENCE NO;" +key, Snackbar.LENGTH_LONG)
-//                        .setAction("COPY", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View view) {
-//                                Snackbar snackbar1 = Snackbar.make(coordinatorLayout1, key, Snackbar.LENGTH_INDEFINITE);
-//                                snackbar1.show();
-//                            }
-//                        });
-
-                //snackbar.show();
             }
         });
     }
@@ -210,43 +182,17 @@ public class reportActivity extends BaseActivity {
         }
 
 
-        // Disable button so there are no multi-posts
-        // setEditingEnabled(false);
-        // Toast.makeText(this, "Posting...", Toast.LENGTH_SHORT).show();
-
-        // [START single_value_read]
-//      final String userId = getUid();
 
         mDatabase.child("Reports").addListenerForSingleValueEvent(
                 new ValueEventListener() {
-        /*final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
-                + "." + getFileExtension(filePath));
-        uploadTask = fileReference.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {*/
-                 //   @Override
+
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    //public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                        // Get user value
-                     /*   User user = dataSnapshot.getValue(User.class);
 
-                        // [START_EXCLUDE]
-                        if (user == null) {
-                            // User is null, error out
-                            Log.e(TAG, "User " + userId + " is unexpectedly null");
-                            //Toast.makeText(this, "Posting...", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // Write new post
-                            writeNewPost(userId, report, badgeNo, image, location, name, email);
-
-
-
-                        }*/
-        // Write new post
         writeNewPost(report, badgeNo, image, location, name, email,caseSerialNo,date);
                         // Finish this Activity, back to the stream
                         setEditingEnabled(true);
-                        //finish();
+
                         // [END_EXCLUDE]
                     }
                     public void onCancelled(DatabaseError databaseError) {
@@ -267,8 +213,6 @@ public class reportActivity extends BaseActivity {
         fullName.setEnabled(enabled);
         emailAddress.setEnabled(enabled);
         if (enabled) {
-            //Toast.makeText(this,"loading", Toast.LENGTH_SHORT).show();
-          //  mProgressDialog.show();
         } else {
             mProgressDialog.hide();
         }
@@ -278,8 +222,7 @@ public class reportActivity extends BaseActivity {
 
     // [START write_fan_out]
    private void writeNewPost( String report, String badgeNo, String image, String location, String name, String email, String caseSerialNo,String date) {
-        // Create new post at /user-posts/$userid/$postid and at
-        // /posts/$postid simultaneously
+
          key = mDatabase.push().getKey();
         caseSerialNo=key;
 
@@ -288,34 +231,12 @@ public class reportActivity extends BaseActivity {
 
         Map<String, Object> childUpdates = new HashMap<>();
         childUpdates.put("" + key, postValues);
-        //childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
         mDatabase.child(key).setValue(post);
-       // mDatabase.updateChildren(childUpdates);
-       //Toast.makeText(this,"Upload Successful ...your case refeference is;" +key ,  Toast.LENGTH_LONG).show();
-       //final View contextView = findViewById(R.id.emailAddress);
-      // coordinatorLayout1=findViewById(R.id.coordinatorLayout1);
 
-//       Snackbar snackbar = Snackbar
-//               .make(coordinatorLayout1, "SUBMITED SUCCESFULLY ...CASE REFERENCE NO;" +key, Snackbar.LENGTH_LONG)
-//               .setAction("COPY", new View.OnClickListener() {
-//                   @Override
-//                   public void onClick(View view) {
-//                       Snackbar snackbar1 = Snackbar.make(coordinatorLayout1, key, Snackbar.LENGTH_INDEFINITE);
-//                       snackbar1.show();
-//                   }
-//               });
-//
-//       snackbar.show();
-//       Snackbar snackBar = Snackbar.make(findViewById(android.R.id.content), "You need to update your profile", Snackbar.LENGTH_LONG);
-//       snackBar.show();
+     //Alert Dialog
 
-//       AlertDialog.Builder adb=new AlertDialog.Builder(reportActivity.this);
-//       adb.setTitle("Title");
-//       adb.setMessage("hey there");
-//       adb.setPositiveButton("Ok", null);
-//       adb.show();
        TextView showText = new TextView(this);
-       showText.setText("SUBMITED SUCCESFULLY ...CASE REFERENCE NO;" +key);
+       showText.setText("SUBMITED SUCCESFULLY.. LONG CLICK TO COPY TO CLIPBOARD AND SEND VIA CHAT CASE REF NO;" +key);
 // Add the Listener
        showText.setOnLongClickListener(new View.OnLongClickListener() {
 
@@ -335,13 +256,13 @@ public class reportActivity extends BaseActivity {
        });
        AlertDialog.Builder dialog=new AlertDialog.Builder(this,R.style.AlertDialogStyle);
        dialog.setView(showText);
-       dialog.setTitle("Dialog Box");
+       dialog.setTitle("PLEASE COPY REF NO");
        dialog.setPositiveButton("Ok",
                new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog,
                                        int which) {
                        finish();
-                       //Toast.makeText(getApplicationContext(),"Yes is clicked",Toast.LENGTH_LONG).show();
+
                    }
                });
        AlertDialog alertDialog=dialog.create();
@@ -383,9 +304,5 @@ public class reportActivity extends BaseActivity {
         String temp= Base64.encodeToString(b, Base64.DEFAULT);
         return temp;
     }
-
-
-
-
 
 }

@@ -14,9 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
-/**
- * Activity to demonstrate anonymous login and account linking (with an email/password account).
- */
+
 public class AnonymousAuthActivity extends BaseActivity implements
         View.OnClickListener {
 
@@ -25,9 +23,6 @@ public class AnonymousAuthActivity extends BaseActivity implements
     // [START declare_auth]
     private FirebaseAuth mAuth;
     // [END declare_auth]
-
-    //private EditText mEmailField;
-   // private EditText mPasswordField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,23 +34,17 @@ public class AnonymousAuthActivity extends BaseActivity implements
         mAuth = FirebaseAuth.getInstance();
         // [END initialize_auth]
 
-        // Fields
-       // mEmailField = findViewById(R.id.fieldEmail);
-      //  mPasswordField = findViewById(R.id.fieldPassword);
 
-        // Click listeners
+        // Click listener
         findViewById(R.id.buttonAnonymousSignIn).setOnClickListener(this);
-        //findViewById(R.id.buttonAnonymousSignOut).setOnClickListener(this);
-      //  findViewById(R.id.buttonLinkAccount).setOnClickListener(this);
+
     }
 
     // [START on_start_check_user]
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-      //  FirebaseUser currentUser = mAuth.getCurrentUser();
-       // updateUI(currentUser);
+
     }
     // [END on_start_check_user]
 
@@ -100,8 +89,6 @@ public class AnonymousAuthActivity extends BaseActivity implements
     public void updateUI(FirebaseUser user) {
         hideProgressDialog();
 
-       // TextView idView = findViewById(R.id.anonymousStatusId);
-        //TextView emailView = findViewById(R.id.anonymousStatusEmail);
         boolean isSignedIn = (user != null);
 
         // Status text
@@ -112,17 +99,14 @@ public class AnonymousAuthActivity extends BaseActivity implements
                    msg.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(msg);
 
-            //idView.setText(user.getUid());
-            //emailView.setText(user.getEmail());
         } else {
-         //   idView.setText("signed out");
-           // emailView.setText(null);
+
         }
 
-        // Button visibility
+
         findViewById(R.id.buttonAnonymousSignIn).setEnabled(!isSignedIn);
         findViewById(R.id.buttonAnonymousSignOut).setEnabled(isSignedIn);
-      //  findViewById(R.id.buttonLinkAccount).setEnabled(isSignedIn);
+
     }
 
     @Override

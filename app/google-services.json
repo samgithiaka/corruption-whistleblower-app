@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "586134680506",
+    "firebase_url": "https://corruptionwhistleblowerapp.firebaseio.com",
+    "project_id": "corruptionwhistleblowerapp",
+    "storage_bucket": "corruptionwhistleblowerapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586134680506:android:57d18e4d699dd6aa",
+        "android_client_info": {
+          "package_name": "com.example.android.corruption_whistleblower_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "586134680506-883ij0gkhqrtsrc54rnlp1d8t7fl246r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.corruption_whistleblower_app",
+            "certificate_hash": "f0f18c301e6b9688c3d7aff18d18b6f29104a25e"
+          }
+        },
+        {
+          "client_id": "586134680506-m827mqol7e05t5dmdtku2jmrqvm4kto2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2ZwwpJlgeUpLK7-YFSKTS4VIpDkWdjTE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "586134680506-m827mqol7e05t5dmdtku2jmrqvm4kto2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

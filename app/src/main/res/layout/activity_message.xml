@@ -3,12 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".message">
-    <TextView
-        android:id="@+id/textViewHello"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""/>
+    <LinearLayout
+        android:layout_marginBottom="84dp"
+android:gravity="center_horizontal"
+        android:background="@drawable/eacc_logo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </LinearLayout>
     <RelativeLayout
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
