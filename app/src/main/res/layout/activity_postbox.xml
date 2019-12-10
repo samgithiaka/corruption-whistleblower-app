@@ -4,28 +4,25 @@
     android:id="@+id/rootLayout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".postbox"
-    android:background="@drawable/eacc_logo">
+    android:background="@drawable/eacc_logo"
+    tools:context=".postbox">
 
     <RelativeLayout
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="16dp">
 
         <Button
-
             android:id="@+id/buttonAnonymousSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/btn"
-            android:text="SIGN IN ANONYMOUSLY"
-            android:textColor="@android:color/background_dark"
-
+            android:text="@string/sign_in_anonymously"
+            style="@style/SolidButton"
             />
     </RelativeLayout>
 

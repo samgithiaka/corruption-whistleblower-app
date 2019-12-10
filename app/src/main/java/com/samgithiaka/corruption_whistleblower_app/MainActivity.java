@@ -1,4 +1,4 @@
-package com.example.android.corruption_whistleblower_app;
+package com.samgithiaka.corruption_whistleblower_app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,7 +13,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView report= findViewById(R.id.report_corruption_text_view);
+        TextView report = findViewById(R.id.report_corruption_text_view);
         report.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -24,8 +24,8 @@ public class MainActivity extends Activity {
                 startActivity(rpt);
             }
         })
-    ;
-        TextView about= findViewById(R.id.about_text_view);
+        ;
+        TextView about = findViewById(R.id.about_text_view);
         about.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
         })
         ;
 
-        TextView contact= findViewById(R.id.contact_us_text_view);
+        TextView contact = findViewById(R.id.contact_us_text_view);
         contact.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
             }
         })
         ;
-        TextView postbox= findViewById(R.id.postbox_text_view);
+        TextView postbox = findViewById(R.id.postbox_text_view);
         postbox.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -62,5 +62,5 @@ public class MainActivity extends Activity {
             }
         })
         ;
-}
+    }
 }

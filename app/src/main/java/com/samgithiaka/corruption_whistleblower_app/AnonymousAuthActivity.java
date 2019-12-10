@@ -1,8 +1,7 @@
-package com.example.android.corruption_whistleblower_app;
+package com.samgithiaka.corruption_whistleblower_app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -12,7 +11,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
+import com.google.firebase.database.annotations.NotNull;
 
 
 public class AnonymousAuthActivity extends BaseActivity implements
@@ -54,7 +53,7 @@ public class AnonymousAuthActivity extends BaseActivity implements
         mAuth.signInAnonymously()
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onComplete(@NotNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInAnonymously:success");
@@ -84,8 +83,6 @@ public class AnonymousAuthActivity extends BaseActivity implements
     }
 
 
-
-
     public void updateUI(FirebaseUser user) {
         hideProgressDialog();
 
@@ -95,17 +92,17 @@ public class AnonymousAuthActivity extends BaseActivity implements
         if (isSignedIn) {
 
 
-                    Intent msg = new Intent(AnonymousAuthActivity.this, message.class);
-                   msg.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(msg);
+            Intent msg = new Intent(AnonymousAuthActivity.this, message.class);
+            msg.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(msg);
 
         } else {
 
         }
 
 
-        findViewById(R.id.buttonAnonymousSignIn).setEnabled(!isSignedIn);
-        findViewById(R.id.buttonAnonymousSignOut).setEnabled(isSignedIn);
+        //findViewById(R.id.buttonAnonymousSignIn).setEnabled(!isSignedIn);
+        // findViewById(R.id.buttonAnonymousSignOut).setEnabled(isSignedIn);
 
     }
 
@@ -117,5 +114,6 @@ public class AnonymousAuthActivity extends BaseActivity implements
         } else if (i == R.id.buttonAnonymousSignOut) {
             signOut();
 
+        }
     }
-}}
+}

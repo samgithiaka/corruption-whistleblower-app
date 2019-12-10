@@ -1,4 +1,4 @@
-package com.example.android.corruption_whistleblower_app;
+package com.samgithiaka.corruption_whistleblower_app;
 
 import android.app.Activity;
 import android.os.Bundle;

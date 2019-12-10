@@ -1,4 +1,4 @@
-package com.example.android.corruption_whistleblower_app;
+package com.samgithiaka.corruption_whistleblower_app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,9 +13,10 @@ import io.smooch.core.Smooch;
 import io.smooch.core.SmoochCallback;
 import io.smooch.ui.ConversationActivity;
 
-public class message extends Activity{
+public class message extends Activity {
+    String APP_ID = getString(R.string.APP_ID);
     private FirebaseAuth mAuth;
-    String APP_ID ="5c9103ea04c4f900106749ae";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class message extends Activity{
         });
         setContentView(R.layout.activity_message);
 
-      Button  cht=findViewById(R.id.buttonChat);
+        Button cht = findViewById(R.id.buttonChat);
         cht.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -37,7 +38,7 @@ public class message extends Activity{
             }
         });
 
-          Button signout= findViewById(R.id.buttonAnonymousSignOut);
+        Button signout = findViewById(R.id.buttonAnonymousSignOut);
         signout.setOnClickListener(new View.OnClickListener() {
 
             @Override

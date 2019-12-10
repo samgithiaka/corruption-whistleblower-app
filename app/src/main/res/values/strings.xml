@@ -5,4 +5,14 @@
 By using this standardized whistle blower system, you can remain absolutely anonymous. Perhaps you have knowledge of bribery and corrupt conduct of traffic officers on our roads. But perhaps you shy away from passing on this information personally.
 
 We want to effectively protect you as a whistle blower and are providing you with a communications platform secured by the latest technology for submitting reports with your name or anonymously. If you wish, the application protects your anonymity completely! Nevertheless, you can actively participate in clarification by setting up an anonymous postbox.</string>
+    <string name="APP_ID">5c9103ea04c4f900106749ae</string>
+    <string name="email_head">REPORT</string>
+    <string name="message">Write message here...</string>
+    <string name="email_address">eacc@integrity.go.ke</string>
+    <string name="MAPS_PACKAGE">com.google.android.apps.maps</string>
+    <string name="sign_in_anonymously">SIGN IN ANONYMOUSLY</string>
+    <string name="submit">SUBMIT</string>
+    <string name="attach_image">ATTACH IMAGE</string>
+    <string name="report_details">REPORT DETAILS</string>
+    <string name="badge_no">BADGE NO.</string>
 </resources>

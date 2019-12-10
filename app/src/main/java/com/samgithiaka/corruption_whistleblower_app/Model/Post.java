@@ -1,4 +1,5 @@
-package com.example.android.corruption_whistleblower_app.Model;
+package com.samgithiaka.corruption_whistleblower_app.Model;
+
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -16,7 +17,7 @@ public class Post {
     public String location;
     public String name;
     public String email;
-    public String caseSerialNo ;
+    public String caseSerialNo;
     public String date;
     public Map<String, Boolean> stars = new HashMap<>();
 
@@ -25,7 +26,7 @@ public class Post {
 
     }
 
-    public Post(String report, String badgeNo, String image, String location, String name, String email,String caseSerialNo,String date) {
+    public Post(String report, String badgeNo, String image, String location, String name, String email, String caseSerialNo, String date) {
 
         this.report = report;
         this.badgeNo = badgeNo;
@@ -33,8 +34,8 @@ public class Post {
         this.location = location;
         this.name = name;
         this.email = email;
-        this.date=date;
-        this.caseSerialNo=caseSerialNo;
+        this.date = date;
+        this.caseSerialNo = caseSerialNo;
 
     }
 

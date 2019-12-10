@@ -1,7 +1,6 @@
-package com.example.android.corruption_whistleblower_app;
+package com.samgithiaka.corruption_whistleblower_app;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class aboutActivity extends Activity {

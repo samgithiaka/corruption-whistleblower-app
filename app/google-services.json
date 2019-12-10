@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:586134680506:android:57d18e4d699dd6aa",
         "android_client_info": {
-          "package_name": "com.example.android.corruption_whistleblower_app"
+          "package_name": "com.samgithiaka.corruption_whistleblower_app"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "586134680506-883ij0gkhqrtsrc54rnlp1d8t7fl246r.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.android.corruption_whistleblower_app",
+            "package_name": "com.samgithiaka.corruption_whistleblower_app",
             "certificate_hash": "f0f18c301e6b9688c3d7aff18d18b6f29104a25e"
           }
         },

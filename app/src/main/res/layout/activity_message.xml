@@ -5,42 +5,45 @@
     android:layout_height="match_parent"
 
     tools:context=".message">
+
     <LinearLayout
-        android:layout_marginBottom="84dp"
-android:gravity="center_horizontal"
-        android:background="@drawable/eacc_logo"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/eacc_logo"
+        android:gravity="center_horizontal">
 
     </LinearLayout>
+
     <RelativeLayout
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    <Button
-        android:layout_below="@id/buttonChat"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/btn"
-        android:id="@+id/buttonAnonymousSignOut"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SIGN OUT"/>
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:id="@+id/buttonAnonymousSignOut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/buttonChat"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/btn"
+            android:text="SIGN OUT" />
 
 
-    <Button
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:background="@color/btn"
-        android:id="@+id/buttonChat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="CHAT WITH ADMIN"/>
+        <Button
+            android:id="@+id/buttonChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/btn"
+            android:text="CHAT WITH ADMIN" />
     </RelativeLayout>
 
 </RelativeLayout>
