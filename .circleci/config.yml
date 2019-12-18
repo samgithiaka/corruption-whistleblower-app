@@ -66,10 +66,7 @@ workflows:
   version: 2
   whistleblower-app-pipeline:
     jobs:
-      - build:
+      - build
       - deploy:
           requires:
             - build
-          filters:
-            branches:
-              only: dev
