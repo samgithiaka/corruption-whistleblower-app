@@ -4,40 +4,6 @@
 #
 version: 2
 jobs:
-  test:
-    working_directory: ~/Corruption_Whistleblower_App
-    docker:
-      # specify the version you desire here
-      - image: circleci/android:api-29
-
-    steps:
-      - checkout
-
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-
-      - run:
-          name: Run Lint Test
-          command: ./gradlew lint
-
-      - run:
-          name: Run Tests
-          command: ./gradlew lint test
-
-      - store_artifacts:
-          path: app/build/reports
-          destination: reports
-
-      - store_test_results:
-          path: app/build/reports/jacoco
-
-      - store_test_results:
-          path: app/build/test-results
-
   build:
     working_directory: ~/Corruption_Whistleblower_App
     docker:
@@ -63,11 +29,6 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-
-
-
-
-
   deploy:
     working_directory: ~/Corruption_Whistleblower_App
     docker:
@@ -105,7 +66,6 @@ workflows:
   version: 2
   whistleblower-app-pipeline:
     jobs:
-      - test:
       - build:
       - deploy:
           requires:
