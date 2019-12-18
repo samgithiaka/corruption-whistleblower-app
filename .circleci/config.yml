@@ -5,26 +5,15 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/Corruption_Whistleblower_App
     docker:
-      # specify the version you desire here
       - image: circleci/android:api-29
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
-
       - save_cache:
           paths:
             - ~/.gradle
@@ -67,6 +56,4 @@ workflows:
   whistleblower-app-pipeline:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
+      - deploy
