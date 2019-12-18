@@ -14,24 +14,27 @@
         android:label="CORRUPTION WHISTLEBLOWER"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".PastReports"></activity>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme">
+            android:label="CORRUPTION WHISTLEBLOWER">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".reportActivity" />
+        <activity
+            android:name=".reportActivity"
+            android:label="Report Corruption" />
         <activity android:name=".aboutActivity" />
         <activity android:name=".contact_us" />
         <activity android:name=".postbox" />
         <activity android:name=".BaseActivity" />
         <activity android:name=".AnonymousAuthActivity" />
-        <activity android:name=".message"></activity>
+        <activity android:name=".message" />
     </application>
 
 </manifest>

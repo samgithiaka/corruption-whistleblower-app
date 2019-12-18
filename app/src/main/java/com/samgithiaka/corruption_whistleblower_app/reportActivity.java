@@ -16,6 +16,9 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,15 +28,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 
-import com.samgithiaka.corruption_whistleblower_app.Model.Post;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.samgithiaka.corruption_whistleblower_app.model.Post;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -57,12 +62,19 @@ public class reportActivity extends BaseActivity {
     private EditText locationIncident;
     private String imageString = "";
 
+    ArrayList<Post> reports = new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
 
-
+        if (getSupportActionBar() != null) {
+            // Show the Up button in the action bar.
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Report Corruption");
+        }
         // [START initialize_database_ref]
         mDatabase = FirebaseDatabase.getInstance().getReference("Reports");
         // [END initialize_database_ref]
@@ -145,6 +157,39 @@ public class reportActivity extends BaseActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.report_menu, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            returnToPrevious();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        returnToPrevious();
+    }
+
+    public void returnToPrevious() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
     public void submitPost() {
         final String report = reportField.getText().toString();
         final String badgeNo = badgeNoField.getText().toString();
@@ -177,12 +222,15 @@ public class reportActivity extends BaseActivity {
 
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+// Get Post object and use the values to update the UI
+                        Post post = dataSnapshot.getValue(Post.class);
                         writeNewPost(report, badgeNo, image, location, name, email, caseSerialNo, date);
                         // Finish this Activity, back to the stream
                         setEditingEnabled(true);
-
                         // [END_EXCLUDE]
+                        reports.add(post);
+                        Log.w("hey", "getUser:onCancelled" + reports.toString());
+
                     }
 
                     public void onCancelled(DatabaseError databaseError) {
@@ -193,6 +241,51 @@ public class reportActivity extends BaseActivity {
                     }
                 });
         // [END single_value_read]
+    }
+
+
+    //IMPLEMENT FETCH DATA AND FILL ARRAYLIST
+    private void fetchData(DataSnapshot dataSnapshot){
+        reports.clear();
+
+        for (DataSnapshot ds : dataSnapshot.getChildren())
+        {
+            Post post = dataSnapshot.getValue(Post.class);
+            reports.add(post);
+        }
+    }
+    //READ THEN RETURN ARRAYLIST
+    public ArrayList<Post> retrieve () {
+        FirebaseDatabase.getInstance().getReference("Reports").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, String s) {
+            fetchData(dataSnapshot);
+                Log.w("hey", "getData" + dataSnapshot.toString());
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
+                fetchData(dataSnapshot);
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return reports;
     }
 
     private void setEditingEnabled(boolean enabled) {

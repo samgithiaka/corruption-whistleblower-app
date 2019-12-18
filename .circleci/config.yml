@@ -1,0 +1,115 @@
+# Java Gradle CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-java/ for more details
+#
+version: 2
+jobs:
+  test:
+    working_directory: ~/Corruption_Whistleblower_App
+    docker:
+      # specify the version you desire here
+      - image: circleci/android:api-29
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+
+      - run:
+          name: Run Lint Test
+          command: ./gradlew lint
+
+      - run:
+          name: Run Tests
+          command: ./gradlew lint test
+
+      - store_artifacts:
+          path: app/build/reports
+          destination: reports
+
+      - store_test_results:
+          path: app/build/reports/jacoco
+
+      - store_test_results:
+          path: app/build/test-results
+
+  build:
+    working_directory: ~/Corruption_Whistleblower_App
+    docker:
+      # specify the version you desire here
+      - image: circleci/android:api-29
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+
+
+
+
+
+  deploy:
+    working_directory: ~/Corruption_Whistleblower_App
+    docker:
+      # specify the version you desire here
+      - image: circleci/android:api-29
+
+    steps:
+      - checkout
+
+      - run:
+          name: Generate APK
+          command: ./gradlew assembleDebug
+
+      - store_artifacts:
+          path: app/build/outputs/apk
+
+      - run:
+          name: Renaming build with version number
+          command: |
+
+            cp app/build/outputs/apk/debug/app-debug.apk ./${CIRCLE_PROJECT_REPONAME}.${CIRCLE_BUILD_NUM}.apk
+            chmod 777 ./${CIRCLE_PROJECT_REPONAME}.${CIRCLE_BUILD_NUM}.apk
+
+      - run:
+          name: Deploy to TestFairy
+          command: |
+            curl \
+              -A "CircleCI 2.0" \
+              -F api_key="$TESTFAIRY_API_KEY" \
+              -F comment="CircleCI build $CIRCLE_BUILD_URL" \
+              -F file=@./${CIRCLE_PROJECT_REPONAME}.${CIRCLE_BUILD_NUM}.apk \
+              https://upload.testfairy.com/api/upload/
+
+workflows:
+  version: 2
+  whistleblower-app-pipeline:
+    jobs:
+      - test
+      - build:
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: dev

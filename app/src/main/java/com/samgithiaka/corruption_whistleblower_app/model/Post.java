@@ -1,4 +1,4 @@
-package com.samgithiaka.corruption_whistleblower_app.Model;
+package com.samgithiaka.corruption_whistleblower_app.model;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -38,7 +38,58 @@ public class Post {
         this.caseSerialNo = caseSerialNo;
 
     }
+    public String getCaseSerialNo() {
+        return caseSerialNo;
+    }
 
+    public void setCaseSerialNo(String caseSerialNo) {
+        this.caseSerialNo = caseSerialNo;
+    }
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getReport() {
+        return report;
+    }
+
+    public void setReport(String report) {
+        this.report = report;
+    }
+
+    public String getBadgeNo() {
+        return badgeNo;
+    }
+
+    public void setBadgeNo(String badgeNo) {
+        this.badgeNo = badgeNo;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
     // [START post_to_map]
     @Exclude
     public Map<String, Object> toMap() {

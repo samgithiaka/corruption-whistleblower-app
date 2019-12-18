@@ -1,12 +1,13 @@
 package com.samgithiaka.corruption_whistleblower_app;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-public class BaseActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class BaseActivity extends AppCompatActivity {
     public ProgressDialog mProgressDialog;
 
     public void showProgressDialog() {

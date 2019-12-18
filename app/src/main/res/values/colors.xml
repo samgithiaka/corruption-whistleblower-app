@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<color name="primaryColor">#9c27b0</color>-->
-    <!--<color name="primaryLightColor">#d05ce3</color>-->
-    <!--<color name="primaryDarkColor">#6a0080</color>-->
-    <!--<color name="primaryTextColor">#ffffff</color>-->
-
-
     <color name="bottomText">#6b6b76</color>
 
     <color name="btnSubmit">#f816a463</color>
     <color name="btn">#1fabd6</color>
+    <color name="textInput">#1F37D6</color>
     <color name="btnRegister">#83838c</color>
     <color name="BaseReleaseColor">#092503</color>
     <color name="BasePressColor">#FAFAFA</color>

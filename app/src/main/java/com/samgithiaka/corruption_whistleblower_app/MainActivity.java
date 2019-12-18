@@ -1,13 +1,16 @@
 package com.samgithiaka.corruption_whistleblower_app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+import androidx.appcompat.widget.Toolbar;
 
+import java.util.Objects;
+
+public class MainActivity extends BaseActivity {
+    Toolbar myToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,20 @@ public class MainActivity extends Activity {
             }
         })
         ;
+
+        TextView reports = findViewById(R.id.rec_view);
+        reports.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                Intent rp = new Intent(MainActivity.this, PastReports.class);
+                rp.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(rp);
+            }
+        })
+        ;
+
         TextView postbox = findViewById(R.id.postbox_text_view);
         postbox.setOnClickListener(new View.OnClickListener() {
 
@@ -62,5 +79,14 @@ public class MainActivity extends Activity {
             }
         })
         ;
+    }
+
+    public void hideMainToolbar(boolean isHidden) {
+        if (isHidden) {
+            Objects.requireNonNull(getSupportActionBar()).hide();
+        } else {
+            Objects.requireNonNull(getSupportActionBar()).isShowing();
+            setSupportActionBar(myToolbar);
+        }
     }
 }

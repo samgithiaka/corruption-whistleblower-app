@@ -14,13 +14,13 @@ import io.smooch.core.SmoochCallback;
 import io.smooch.ui.ConversationActivity;
 
 public class message extends Activity {
-    String APP_ID = getString(R.string.APP_ID);
+    String app_id = "5c9103ea04c4f900106749ae";
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Smooch.init(getApplication(), new Settings(APP_ID), new SmoochCallback() {
+        Smooch.init(getApplication(), new Settings(app_id), new SmoochCallback() {
             @Override
             public void run(Response response) {
                 // Handle init result
