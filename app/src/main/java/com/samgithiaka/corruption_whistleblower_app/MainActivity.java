@@ -16,7 +16,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        TestFairy.begin(this, BuildConfig.TEST_FAIRY_KEY);
+        TestFairy.begin(this, "SDK-huROhGwG");
         setContentView(R.layout.activity_main);
 
       binding.reportCorruptionTextView.setOnClickListener(v -> proceedToReporting());
