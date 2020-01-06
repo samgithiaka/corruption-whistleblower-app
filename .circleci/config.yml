@@ -37,7 +37,6 @@ jobs:
       - run:
           name: Renaming build with version number
           command: |
-
             cp app/build/outputs/apk/debug/app-debug.apk ./${CIRCLE_PROJECT_REPONAME}.${CIRCLE_BUILD_NUM}.apk
             chmod 777 ./${CIRCLE_PROJECT_REPONAME}.${CIRCLE_BUILD_NUM}.apk
 
